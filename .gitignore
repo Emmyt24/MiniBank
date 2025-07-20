@@ -1,0 +1,27 @@
+# Compiler files
+cache/
+out/
+
+# Ignores development broadcast logs
+!/broadcast
+/broadcast/*/31337/
+/broadcast/**/dry-run/
+
+# Docs
+docs/
+
+# Dotenv file
+.env
+
+# Ignore chainlink brownie contracts ABI and source files to avoid staging large external dependencies
+lib/chainlink-brownie-contracts/contracts/abi/
+lib/chainlink-brownie-contracts/contracts/src/
+lib/chainlink-brownie-contracts/contracts/package.json
+lib/chainlink-brownie-contracts/package.json
+lib/chainlink-brownie-contracts/version.txt
+lib/chainlink-brownie-contracts/yarn.lock
+
+# Ignore forge std external library
+lib/forge-std/
+
+# Ignore other external libraries if needed
