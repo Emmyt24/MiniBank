@@ -25,13 +25,10 @@ contract MiniBank {
             revert MiniBank__NotEnoughEth();
         }
 
-        addressToUser[msg.sender] = User({
-            balance: msg.sender.balance,
-            isRegistered: true
-        });
+        addressToUser[msg.sender] = User({balance: 0, isRegistered: true});
     }
 
-    function deposit() public payable onlyRegistered {
+    function deposit(uint256 amount) public payable onlyRegistered {
         if (msg.sender.balance < minimumBalance) {
             revert MiniBank__NotEnoughEth();
         }
@@ -40,9 +37,9 @@ contract MiniBank {
             revert MiniBank__MinimumMustBeGreaterThanZero();
         }
 
-        addressToUser[msg.sender].balance += msg.value;
+        addressToUser[msg.sender].balance += amount;
         registeredDepositors.push(msg.sender);
-        emit Deposit(msg.sender, msg.value);
+        emit Deposit(msg.sender, amount);
     }
 
     function withdraw(uint amount) public payable {
